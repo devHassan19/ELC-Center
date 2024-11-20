@@ -11,6 +11,7 @@ const isSignIn = require('./middleware/is-signed-in.js')
 const passUserToView = require('./middleware/pass-user-to-view.js')
 
 const port = process.env.PORT ? process.env.PORT : '3000'
+const path = require('path')
 mongoose.connect(process.env.MONGODB_URI)
 
 mongoose.connection.on('connected', () => {
@@ -20,6 +21,7 @@ mongoose.connection.on('connected', () => {
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -43,12 +45,14 @@ app.use((req, res, next) => {
 
 // Require Controller
 const authController = require('./controllers/auth')
-
+const adminRouter = require('./router/admin.js')
 // Use Controllers
+
 app.use('/auth', authController)
+app.use('/admin', adminRouter)
 
 app.get('/', async (req, res) => {
-  res.render('index.ejs')
+  res.render('partials/_navbar.ejs')
 })
 app.get('/vip-lounge', isSignIn, (req, res) => {
   res.send(`Welcome to the party ${req.session.user.username}`)
