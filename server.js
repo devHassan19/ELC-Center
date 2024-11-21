@@ -52,7 +52,7 @@ app.use('/auth', authController)
 app.use('/admin', adminRouter)
 
 app.get('/', async (req, res) => {
-  res.render('partials/_navbar.ejs')
+  res.render('index.ejs')
 })
 app.get('/vip-lounge', isSignIn, (req, res) => {
   res.send(`Welcome to the party ${req.session.user.username}`)
