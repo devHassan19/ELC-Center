@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const Admin = require('..//models/user')
+const Subject = require('../models/subject')
+const Class = require('../models/class')
 
 router.get('/', async (req, res) => {
   try {
@@ -13,32 +15,52 @@ router.get('/', async (req, res) => {
     res.redirect('/')
   }
 })
+router.get('/class', async (req, res) => {
+  try {
+    const teachers = await Admin.find({ userType: 'teacher' })
+    const populateClass = await Class.find({})
+    const subject = await Subject.find({})
+    res.render('admin/class.ejs', { subject, populateClass, teachers })
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
 
-// exports.index = async (req, res) => {
-//   try {
-//     // const populatedAdmin = await Admin.find({}).populate('owner')
-//     // console.log('Populated Admin: ', populatedAdmin)
-//     // res.render('admin/newClass.ejs', { admin: populatedAdmin })
-//     res.render('admin/newClass.ejs')
-//   } catch (error) {
-//     console.log(err)
-//     res.redirect('/')
-//   }
-// }
+router.get('/newClass', async (req, res) => {
+  const teachers = await Admin.find({ userType: 'teacher' })
 
-// exports.userIndex = async (req, res) => {
-//   try {
-//     res.render('admin/userIndex.ejs')
-//   } catch (error) {
-//     console.log(err)
-//     res.redirect('/')
-//   }
-// }
+  const subject = await Subject.find({})
+  res.render('admin/newClass.ejs', { subject, teachers })
+})
 
-// exports.create = async (req, res) => {
-//   req.body.owner = req.session.user._id
-//   await Class.create(req.body)
-//   res.redirect('/admin')
-// }
+router.post('/', async (req, res) => {
+  await Class.create(req.body)
+  res.redirect('/admin/class')
+})
+
+router.get('/class', async (req, res) => {
+  try {
+    const teachers = await Admin.find({ userType: 'teacher' })
+    const populateClass = await Class.find({})
+    const subject = await Subject.find({})
+    res.render('admin/class', { subject, populateClass, teachers })
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
+router.delete('/:classId', async (req, res) => {
+  try {
+    const populateClass = await Class.findById(req.params.classId)
+
+    await Class.deleteOne()
+    res.redirect('/admin/class')
+  } catch (error) {
+    console.error(error)
+    res.redirect('/')
+  }
+})
 
 module.exports = router

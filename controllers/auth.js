@@ -89,3 +89,11 @@ router.get('/sign-out', (req, res) => {
 })
 
 module.exports = router
+
+// <label for="teacher">Teacher:</label>
+// <select name="teacher" id="teacher" multiple>
+//   <% user.forEach((users)=> { %>
+//     <option value="<%= users._id %>">
+//       <%= user._id %>
+//     </option>
+//     <% }) %>
