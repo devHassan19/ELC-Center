@@ -29,7 +29,6 @@ router.get('/class', async (req, res) => {
 
 router.get('/newClass', async (req, res) => {
   const teachers = await Admin.find({ userType: 'teacher' })
-
   const subject = await Subject.find({})
   res.render('admin/newClass.ejs', { subject, teachers })
 })
@@ -51,10 +50,36 @@ router.get('/class', async (req, res) => {
   }
 })
 
+router.get('/:classId/edit', async (req, res) => {
+  try {
+    const teachers = await Admin.find({ userType: 'teacher' })
+    const subject = await Subject.find({})
+    const curClass = await Class.findById(req.params.classId)
+    res.render('admin/editClass.ejs', {
+      curClass,
+      teachers,
+      subject
+    })
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
+router.put('/:classId', async (req, res) => {
+  try {
+    const curClass = await Class.findById(req.params.classId)
+    await curClass.updateOne(req.body)
+    res.redirect('/admin/class')
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
 router.delete('/:classId', async (req, res) => {
   try {
     const populateClass = await Class.findById(req.params.classId)
-
     await Class.deleteOne()
     res.redirect('/admin/class')
   } catch (error) {

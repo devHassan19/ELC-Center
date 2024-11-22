@@ -2,10 +2,10 @@
 
 
 
-<form action="/admin/<%= class._id %>?_method=PUT" method="post">
+<form action="/admin/<%= curClass._id %>?_method=PUT" method="post">
 
   <label for="teacher">Teacher:</label>
-  <select name="teacher" id="teacher" multiple value="<%= teacher.username %>">
+  <select name="teacher" id="teacher" multiple value="<%= teachers.username %>">
     <% teachers.forEach((teacher)=> { %>
       <option value="<%= teacher._id %>">
         <%= teacher.username %>
@@ -25,7 +25,7 @@
   <br>
 
   <label for="time">Time:</label>
-  <select name="time" id="time" multiple value="<%= pap.name %>">
+  <select name="time" id="time" multiple value="<%= curClass.time %>">
     <option value="09:00 AM">09:00 AM</option>
     <option value="12:00 PM">12:00 PM</option>
     <option value="03:00 PM">03:00 PM</option>
@@ -34,7 +34,7 @@
   <br>
   <br>
   <label for="capacity">capacity:</label>
-  <input type="number" name="capacity" id="capacity">
+  <input type="number" name="capacity" id="capacity" value="<%= curClass.capacity %>">
   <br>
 
   <!-- Add a submit button -->
