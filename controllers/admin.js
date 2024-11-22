@@ -6,15 +6,14 @@ const Class = require('../models/class')
 
 router.get('/', async (req, res) => {
   try {
-    // const populatedIngredient = await Ingredient.find({}).populate('owner')
-    // console.log('Populated ingredient:', populatedIngredient)
-    // res.render('ingredients/index.ejs', { Ingredient: populatedIngredient })
     res.render('admin/index.ejs')
   } catch (error) {
     console.log(error)
     res.redirect('/')
   }
 })
+
+// -------------Class section -------------------
 router.get('/class', async (req, res) => {
   try {
     const teachers = await Admin.find({ userType: 'teacher' })
@@ -87,5 +86,28 @@ router.delete('/:classId', async (req, res) => {
     res.redirect('/')
   }
 })
+
+// -------------end Class section ----------------
+
+// -------------Teacher section ------------------
+router.get('/teacher', async (req, res) => {
+  try {
+    const teachers = await Admin.find({ userType: 'teacher' })
+    const populateClass = await Class.find({})
+    const subject = await Subject.find({})
+    res.render('admin/teacher.ejs', {
+      subject,
+      populateClass,
+      teachers
+    })
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+// -------------end teacher section --------------
+
+// -------------Student section ------------------
+// -------------End student section --------------
 
 module.exports = router
