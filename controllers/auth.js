@@ -43,7 +43,7 @@ router.post('/sign-in', async (req, res) => {
       res.redirect('/admin')
       // res.send(`You are Admin`)
     } else if (user.userType == 'teacher') {
-      // res.redirect('/teacher')
+      res.redirect('/teacher')
     } else if (user.userType == 'student') {
       // res.redirect('/student')
       res.send(`You are Student`)

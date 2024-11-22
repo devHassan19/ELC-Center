@@ -34,21 +34,21 @@
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li class="dropdown"><a href="#"><span>User</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <% if (user) { %>
 
-                <li> <a href="/auth/sign-out">Sign Out</a></li>
-                <% } else { %>
-                  <li class="dropdown"><a href="#"><span>User</span> <i
-                        class="bi bi-chevron-down toggle-dropdown"></i></a>
-                    <ul>
-                      <li> <a href="/auth/sign-up">Sign Up</a></li>
-                      <li> <a href="/auth/sign-in">Sign In</a></li>
-                      <% } %>
-                    </ul>
+
+          <li class="dropdown"><a href="#"><span>User</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <% if (user) { %>
+
+          <li> <a href="/auth/sign-out">Sign Out</a></li>
+          <% } else { %>
+            <ul>
+              <li> <a href="/auth/sign-up">Sign Up</a></li>
+              <li> <a href="/auth/sign-in">Sign In</a></li>
+              <a href="/auth/sign-out">Sign Out</a>
+              <% } %>
             </ul>
-            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
     </div>

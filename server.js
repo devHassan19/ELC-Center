@@ -46,10 +46,14 @@ app.use((req, res, next) => {
 // Require Controller
 const authController = require('./controllers/auth')
 const adminRouter = require('./router/admin.js')
+const teacherCtrl = require('./router/teacher.js')
+const studentCtrl = require('./router/student.js')
 // Use Controllers
 
 app.use('/auth', authController)
 app.use('/admin', adminRouter)
+app.use('/teacher', teacherCtrl)
+app.use('/student', studentCtrl)
 
 app.get('/', async (req, res) => {
   res.render('index.ejs')
