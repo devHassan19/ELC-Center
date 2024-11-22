@@ -38,19 +38,6 @@ router.get('/sign-in', (req, res) => {
 
 router.post('/sign-in', async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username })
-    if (user.userType == 'admin') {
-      res.redirect('/admin')
-      // res.send(`You are Admin`)
-    } else if (user.userType == 'teacher') {
-      res.redirect('/teacher')
-    } else if (user.userType == 'student') {
-      // res.redirect('/student')
-      res.send(`You are Student`)
-    } else {
-      res.send(`come back later!`)
-    }
-
     const userInDatabase = await User.findOne({ username: req.body.username })
     if (!userInDatabase) {
       return res.send('Login failed. Please try again.')
@@ -74,7 +61,18 @@ router.post('/sign-in', async (req, res) => {
     }
 
     req.session.message = 'User logged in successfully'
-    res.redirect('/')
+    const user = await User.findOne({ username: req.body.username })
+    if (user.userType == 'admin') {
+      res.redirect('/admin')
+      // res.send(`You are Admin`)
+    } else if (user.userType == 'teacher') {
+      res.redirect('/teacher')
+    } else if (user.userType == 'student') {
+      res.redirect('/student')
+      // res.send(`You are Student`)
+    } else {
+      res.send(`come back later!`)
+    }
   } catch (error) {
     console.log(error)
     req.session.message = 'Pleas try again later '

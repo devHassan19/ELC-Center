@@ -37,42 +37,75 @@
 
   <%- include('../partials/_navbar.ejs') %>
 
+
+
     <main class="main">
+
       <!-- Service Details Section -->
       <section id="service-details" class="service-details section">
+
         <div class="container">
+
           <div class="row gy-5">
+
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
               <div class="service-box">
-                <h4>Teacher Dashboard</h4>
+                <h4>Admin Dashboard</h4>
                 <div class="services-list">
-                  <a href="/teacher" class="active"><i class="bi bi-arrow-right-circle"></i><span>Subject</span></a>
+                  <a href="#" class="active"><i class="bi bi-arrow-right-circle"></i><span>Users</span></a>
+                  <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Teacher</span></a>
+                  <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Classes</span></a>
                 </div>
               </div><!-- End Services List -->
             </div>
+
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-
               <!--  //Write code here -->
-              <p>Hloooo Teacher Page</p>
+              <p>Hloooo New Class Page</p>
 
-              <h1>My subjects</h1>
-              <a href="/teacher/new">Add a New Subject</a>
+              <!-- views/applications/new.ejs -->
 
-              <ul>
-                <% Subject.forEach((subject)=> { %>
+              <form action="/admin" method="post">
+                <label for="teacher">Teacher:</label>
+                <input type="text" name="teacher" id="teacher">
 
-                  <li>
-                    The Subject name is <%= subject.name %> owned by <%= subject.owner.username %>.
-                        <a href="/teacher/<%= subject._id %>">View more details.</a>
-                  </li>
-                  <% }) %>
-              </ul>
+                <label for="subject">Subject:</label>
+                <input type="text" name="subject" id="subject">
+
+                <label for="time">Time:</label>
+                <input type="number" name="time" id="time">
+
+                <label for="capacity">capacity:</label>
+                <input type="number" name="capacity" id="capacity">
+                <!-- 
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                  <option value="interested">Interested</option>
+                  <option value="applied">Applied</option>
+                  <option value="interviewing">Interviewing</option>
+                  <option value="rejected">Rejected</option>
+                  <option value="accepted">Accepted</option>
+                </select> -->
+
+                <!-- Add a submit button -->
+                <button type="submit">Open Class</button>
+              </form>
+
+
 
             </div>
+
           </div>
+
         </div>
+
       </section><!-- /Service Details Section -->
+
     </main>
+
+
+
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
         class="bi bi-arrow-up-short"></i></a>

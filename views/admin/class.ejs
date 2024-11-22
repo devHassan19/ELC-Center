@@ -37,42 +37,54 @@
 
   <%- include('../partials/_navbar.ejs') %>
 
+
+
     <main class="main">
+
       <!-- Service Details Section -->
       <section id="service-details" class="service-details section">
+
         <div class="container">
+
           <div class="row gy-5">
+
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
               <div class="service-box">
-                <h4>Teacher Dashboard</h4>
+                <h4>Admin Dashboard</h4>
                 <div class="services-list">
-                  <a href="/teacher" class="active"><i class="bi bi-arrow-right-circle"></i><span>Subject</span></a>
+                  <a href="#" class="active"><i class="bi bi-arrow-right-circle"></i><span>Users</span></a>
+                  <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Teacher</span></a>
+                  <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Classes</span></a>
                 </div>
               </div><!-- End Services List -->
+
+
+
             </div>
+
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
 
               <!--  //Write code here -->
-              <p>Hloooo Teacher Page</p>
+              <p>Hloooo Class Page</p>
 
-              <h1>My subjects</h1>
-              <a href="/teacher/new">Add a New Subject</a>
-
-              <ul>
-                <% Subject.forEach((subject)=> { %>
-
-                  <li>
-                    The Subject name is <%= subject.name %> owned by <%= subject.owner.username %>.
-                        <a href="/teacher/<%= subject._id %>">View more details.</a>
-                  </li>
-                  <% }) %>
-              </ul>
+              <a href="/auth/sign-up" class="btn-get-started animate__animated animate__fadeInUp scrollto">
+                Open New Class</a>
+              <br>
+              <a href="/admin/newClass">Add an App</a>
 
             </div>
+
           </div>
+
         </div>
+
       </section><!-- /Service Details Section -->
+
     </main>
+
+
+
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
         class="bi bi-arrow-up-short"></i></a>
