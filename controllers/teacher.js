@@ -7,8 +7,6 @@ router.get('/', async (req, res) => {
   try {
     const populatedSubject = await Subject.find({}).populate('owner')
     console.log('Populated subject:', populatedSubject)
-    // const currentSubject = await Subject.findById(req.params.subjectId)
-    // if (currentSubject.owner.equals(req.session.user._id))
     res.render('teacher/index.ejs', { Subject: populatedSubject })
   } catch (error) {
     console.log(error)
