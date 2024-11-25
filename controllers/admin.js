@@ -107,7 +107,22 @@ router.get('/teacher', async (req, res) => {
 })
 // -------------end teacher section --------------
 
-// -------------Student section ------------------
-// -------------End student section --------------
+// -------------Subject section ------------------
+router.get('/subject', async (req, res) => {
+  try {
+    const populatedSubject = await Subject.find({})
+    console.log('Populated subject:', populatedSubject)
+    res.render('admin/subject.ejs', { Subject: populatedSubject })
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
+router.get('/newSub', async (req, res) => {
+  res.render('admin/newSub.ejs')
+})
+
+// -------------End Subject section --------------
 
 module.exports = router

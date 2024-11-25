@@ -1,97 +1,3 @@
-class page
-
-<br><br><br><br>
-<h1>Classes</h1>
-<a href="/admin/newClass">Add a New Class</a>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Teacher</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Time</th>
-    </tr>
-  </thead>
-  <% let counter=1; %>
-    <% populateClass.forEach((populateClass)=> { %>
-      <tbody>
-        <tr>
-          <td>
-            <%= counter++ %>
-          </td>
-          <td>
-            <%= populateClass.teacher %>
-          </td>
-          <td>
-            <%= populateClass.subject %>
-          </td>
-          <td>
-            <%= populateClass.time %>
-          </td>
-          <td>
-            <a href="/admin/<%= populateClass._id %>/edit">Edit</a>
-          </td>
-          <td>
-            <form action="/admin/<%= populateClass._id %>?_method=DELETE" method="POST">
-              <button type="submit">Delete</button>
-            </form>
-          </td>
-        </tr>
-        <% }) %>
-      </tbody>
-</table>
-
-
------------------------------
-
-list paga
-
-<main class="main">
-
-  <!-- Service Details Section -->
-  <section id="service-details" class="service-details section">
-
-    <div class="container">
-
-      <div class="row gy-5">
-
-        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="service-box">
-            <h4>Admin Dashboard</h4>
-            <div class="services-list">
-              <a href="/admin/class"><i class="bi bi-arrow-right-circle"></i><span>Classes</span></a>
-              <a href="/admin/teacher"><i class="bi bi-arrow-right-circle"></i><span>Teacher</span></a>
-              <!-- <a href="" class="active"><i class="bi bi-arrow-right-circle"></i><span>Subject</span></a> -->
-              <a href="/admin/teacher"><i class="bi bi-arrow-right-circle"></i><span>Subject</span></a>
-            </div>
-          </div><!-- End Services List -->
-
-
-
-        </div>
-
-        <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-
-          <!--  //Write code here -->
-          <p>Hello Home Page</p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section><!-- /Service Details Section -->
-
-</main>
-
-
-------------------------------
-
-index Page
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -147,7 +53,7 @@ index Page
                   <a href="/admin/class"><i class="bi bi-arrow-right-circle"></i><span>Classes</span></a>
                   <a href="/admin/teacher"><i class="bi bi-arrow-right-circle"></i><span>Teacher</span></a>
                   <!-- <a href="" class="active"><i class="bi bi-arrow-right-circle"></i><span>Subject</span></a> -->
-                  <a href="/admin/subject"><i class="bi bi-arrow-right-circle"></i><span>Subject</span></a>
+                  <a href="/admin/teacher"><i class="bi bi-arrow-right-circle"></i><span>Subject</span></a>
                 </div>
               </div><!-- End Services List -->
 
@@ -156,7 +62,18 @@ index Page
             </div>
 
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-              <p> Write code here</p>
+              <br><br>
+              <a href="/admin/newSub">Add a New Subject</a>
+
+              <ul>
+                <% Subject.forEach((subject)=> { %>
+
+                  <li>
+                    The Subject name is <%= subject.name %>
+                      <a href="/teacher/<%= subject._id %>">View more details.</a>
+                  </li>
+                  <% }) %>
+              </ul>
             </div>
 
           </div>
