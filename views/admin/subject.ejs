@@ -64,16 +64,39 @@
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
               <br><br>
               <a href="/admin/newSub">Add a New Subject</a>
+              <br>
+              <br>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Subject</th>
 
-              <ul>
-                <% Subject.forEach((subject)=> { %>
+                  </tr>
+                </thead>
+                <% let counter=1; %>
+                  <% Subject.forEach((subject)=> { %>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <%= counter++ %>
+                        </td>
 
-                  <li>
-                    The Subject name is <%= subject.name %>
-                      <a href="/teacher/<%= subject._id %>">View more details.</a>
-                  </li>
-                  <% }) %>
-              </ul>
+                        <td>
+                          <%= subject.name %>
+                        </td>
+                        <td>
+                          <a href="/admin/<%= Subject._id %>/edit">Edit</a>
+                        </td>
+                        <td>
+                          <form action="/admin/<%= Subject._id %>?_method=DELETE" method="POST">
+                            <button type="submit">Delete</button>
+                          </form>
+                        </td>
+                      </tr>
+                      <% }) %>
+                    </tbody>
+              </table>
             </div>
 
           </div>
