@@ -123,6 +123,10 @@ router.get('/newSub', async (req, res) => {
   res.render('admin/newSub.ejs')
 })
 
+router.post('/newSub', async (req, res) => {
+  await Subject.create(req.body)
+  res.redirect('/admin/subject')
+})
 // -------------End Subject section --------------
 
 module.exports = router
