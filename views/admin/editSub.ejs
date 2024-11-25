@@ -63,9 +63,9 @@
 
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
               <p>Edit Subject</p>
-              <form action="/admin/<%= Subject._id %>?_method=PUT" method="POST">
+              <form action="/admin/<%= subject._id %>?_method=PUT" method="POST">
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" value="<%= Subject.name %>" />
+                <input type="text" name="name" id="name" value="<%= subject.name %>" />
                 <br>
                 <button type="submit">Edit Subject </button>
               </form>

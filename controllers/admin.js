@@ -127,6 +127,41 @@ router.post('/newSub', async (req, res) => {
   await Subject.create(req.body)
   res.redirect('/admin/subject')
 })
+
+router.get('/:subjectId/edit', async (req, res) => {
+  try {
+    const currentSubject = await Subject.findById(req.params.subjectId)
+    res.render('admin/editSub.ejs', {
+      Subject: currentSubject
+    })
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
+router.put('/:subjectId', async (req, res) => {
+  try {
+    const currentSubject = await Subject.findById(req.params.subjectId)
+    await currentSubject.updateOne(req.body)
+    res.redirect('/admin/subject')
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
+router.delete('/:subjectId', async (req, res) => {
+  try {
+    const subject = await Subject.findById(req.params.subjectId)
+    await Subject.deleteOne()
+    res.redirect('/admin/subject')
+  } catch (error) {
+    console.error(error)
+    res.redirect('/')
+  }
+})
+
 // -------------End Subject section --------------
 
 module.exports = router
