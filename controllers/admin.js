@@ -128,7 +128,7 @@ router.post('/newSub', async (req, res) => {
   res.redirect('/admin/subject')
 })
 
-router.get('/:subjectId/edit', async (req, res) => {
+router.get('/:subjectId/edittt', async (req, res) => {
   try {
     const currentSubject = await Subject.findById(req.params.subjectId)
     res.render('admin/editSub.ejs', {
@@ -140,7 +140,7 @@ router.get('/:subjectId/edit', async (req, res) => {
   }
 })
 
-router.put('/:subjectId', async (req, res) => {
+router.put('/admin/:subjectId', async (req, res) => {
   try {
     const currentSubject = await Subject.findById(req.params.subjectId)
     await currentSubject.updateOne(req.body)
@@ -151,7 +151,7 @@ router.put('/:subjectId', async (req, res) => {
   }
 })
 
-router.delete('/:subjectId', async (req, res) => {
+router.delete('/admin/:subjectId', async (req, res) => {
   try {
     const subject = await Subject.findById(req.params.subjectId)
     await Subject.deleteOne()
