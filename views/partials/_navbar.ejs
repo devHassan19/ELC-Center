@@ -6,9 +6,9 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="/admin" class="active">Home</a></li>
-        <% if (user) { %>
 
+        <% if (user) { %>
+          <li><a href="/admin" class="active">Home</a></li>
           <li> <a href="/auth/sign-out">Sign Out</a></li>
           <% } else { %>
             <ul>
