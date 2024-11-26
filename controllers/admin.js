@@ -3,6 +3,7 @@ const router = express.Router()
 const Admin = require('..//models/user')
 const Subject = require('../models/subject')
 const Class = require('../models/class')
+const Teacher = require('../models/teacher')
 
 router.get('/', async (req, res) => {
   try {
@@ -92,14 +93,9 @@ router.delete('/:classId', async (req, res) => {
 // -------------Teacher section ------------------
 router.get('/teacher', async (req, res) => {
   try {
-    const teachers = await Admin.find({ userType: 'teacher' })
-    const populateClass = await Class.find({})
-    const subject = await Subject.find({})
-    res.render('admin/teacher.ejs', {
-      subject,
-      populateClass,
-      teachers
-    })
+    const populatedTeachers = await Teacher.find({})
+    console.log('Populated teacher:', populatedTeachers)
+    res.render('admin/teacher.ejs', { Teacher: populatedTeachers })
   } catch (error) {
     console.log(error)
     res.redirect('/')
@@ -108,6 +104,11 @@ router.get('/teacher', async (req, res) => {
 
 router.get('/newTeach', async (req, res) => {
   res.render('admin/newTeach.ejs')
+})
+
+router.post('/newTeach', async (req, res) => {
+  await Teacher.create(req.body)
+  res.redirect('/admin/teacher')
 })
 // -------------end teacher section --------------
 
