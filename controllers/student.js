@@ -3,18 +3,6 @@ const router = express.Router()
 const Student = require('..//models/user')
 const Class = require('../models/class')
 
-// router.get('/', async (req, res) => {
-//   try {
-//     const populatedClass = await Class.find({})
-//       .populate('teacher')
-//       .populate('subject')
-//     res.render('student/index.ejs', { Class: populatedClass })
-//   } catch (error) {
-//     console.log(error)
-//     res.redirect('/student')
-//   }
-// })
-
 router.get('/', async (req, res) => {
   try {
     const mySubject = await Class.find({

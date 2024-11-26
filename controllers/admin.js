@@ -32,7 +32,6 @@ router.get('/class', async (req, res) => {
     const populateClass = await Class.find({})
       .populate('teacher')
       .populate('subject')
-    console.log(populateClass)
     const subject = await Subject.find({})
     res.render('admin/class.ejs', { subject, populateClass })
   } catch (error) {
@@ -46,6 +45,7 @@ router.get('/class/:classId/edit', async (req, res) => {
     const curClass = await Class.findById(req.params.classId)
     const teach = await Teacher.find({})
     const subject = await Subject.find({})
+
     res.render('admin/editClass.ejs', {
       curClass,
       subject,
