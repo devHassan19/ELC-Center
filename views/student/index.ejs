@@ -47,7 +47,6 @@
           <div class="row gy-5">
 
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-              <p> Write code here</p>
               <br>
               <h3><a href="/student/new">Join to Class</a></h3>
               <br>
@@ -59,26 +58,31 @@
                     <th scope="col">Subject</th>
                     <th scope="col">Time</th>
                   </tr>
-                </thead>
-                <% let counter=1; %>
-                  <% Class.forEach((populatedClass)=> { %>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <%= counter++ %>
-                        </td>
-                        <td>
-                          <%= populatedClass.teacher %>
-                        </td>
-                        <td>
-                          <%= populatedClass.subject %>
-                        </td>
-                        <td>
-                          <%= populatedClass.time %>
-                        </td>
-                      </tr>
-                      <% }) %>
-                    </tbody>
+
+
+                  <div class="profile-card-container">
+
+
+                    <% let counter=1; %>
+                      <% mySubject.forEach((mySubject)=> { %>
+                <tbody>
+                  <tr>
+                    <td>
+                      <%= counter++ %>
+                    </td>
+                    <td>
+                      <%= mySubject.teacher.name %>
+                    </td>
+                    <td>
+                      <%= mySubject.subject.name %>
+                    </td>
+                    <td>
+                      <%= mySubject.time %>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+
               </table>
 
             </div>
