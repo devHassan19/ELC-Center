@@ -110,6 +110,30 @@ router.post('/newTeach', async (req, res) => {
   await Teacher.create(req.body)
   res.redirect('/admin/teacher')
 })
+
+router.get('/teacher/:teacherId/Edit', async (req, res) => {
+  try {
+    const currentTeacher = await Teacher.findById(req.params.teacherId)
+    res.render('admin/editTeach.ejs', {
+      Teacher: currentTeacher
+    })
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
+router.put('/teacher/:teacherId', async (req, res) => {
+  try {
+    const currentTeacher = await Teacher.findById(req.params.teacherId)
+    await currentTeacher.updateOne(req.body)
+    res.redirect('/admin/teacher')
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
 // -------------end teacher section --------------
 
 // -------------Subject section ------------------

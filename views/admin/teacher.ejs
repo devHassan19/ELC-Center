@@ -64,9 +64,10 @@
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
               <br>
               <br>
-              <br>
+
 
               <a href="/admin/newTeach">Add a New Teacher</a>
+              <br>
               <table class="table">
                 <thead>
                   <tr>
@@ -87,10 +88,10 @@
                           <%= teachers.name %>
                         </td>
                         <td>
-
+                          <a href="/admin/teacher/<%= teachers._id %>/Edit">Edit</a>
                         </td>
                         <td>
-                          <form action="" method="POST">
+                          <form action="/admin/teacher/<%= teachers._id %>?_method=DELETE" method="POST">
                             <button type="submit">Delete</button>
                           </form>
                         </td>

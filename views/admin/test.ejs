@@ -240,3 +240,14 @@ index Page
         </tr>
         <% }) %>
       </tbody>
+
+
+      -----------------------------
+
+      <p>Edit Teacher</p>
+      <form action="/admin/teacher/<%= Teacher._id %>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= Teacher.name %>" />
+        <br>
+        <button type="submit">Edit Teacher </button>
+      </form>
