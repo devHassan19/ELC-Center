@@ -1,0 +1,24 @@
+<header id="header" class="header d-flex align-items-center fixed-top"></header>
+<div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+  <h1 class="sitename">ELC CENTER</h1>
+  </a>
+
+  <nav id="navmenu" class="navmenu">
+    <ul>
+      <li><a href="/student" class="active">My Schedule</a></li>
+      <% if (user) { %>
+
+        <li> <a href="/auth/sign-out">Sign Out</a></li>
+        <% } else { %>
+          <ul>
+            <li> <a href="/auth/sign-up">Sign Up</a></li>
+            <li> <a href="/auth/sign-in">Sign In</a></li>
+            <% } %>
+          </ul>
+    </ul>
+    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+  </nav>
+
+</div>
+</header>

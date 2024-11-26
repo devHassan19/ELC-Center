@@ -1,13 +1,22 @@
 const express = require('express')
 const router = express.Router()
 const Student = require('..//models/user')
+const Class = require('../models/class')
 
 router.get('/', async (req, res) => {
   try {
-    // const populatedIngredient = await Ingredient.find({}).populate('owner')
-    // console.log('Populated ingredient:', populatedIngredient)
-    // res.render('ingredients/index.ejs', { Ingredient: populatedIngredient })
-    res.render('student/index.ejs')
+    const populatedClass = await Class.find({})
+    res.render('student/index.ejs', { Class: populatedClass })
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
+router.get('/new', async (req, res) => {
+  try {
+    const populatedClass = await Class.find({})
+    res.render('student/new.ejs', { Class: populatedClass })
   } catch (error) {
     console.log(error)
     res.redirect('/')
