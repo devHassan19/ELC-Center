@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
 // -------------Class section -------------------
 router.get('/class', async (req, res) => {
   try {
-    const teachers = await Admin.find({ userType: 'teacher' })
+    // const teachers = await Admin.find({ userType: 'teacher' })
+    const teachers = await Teacher.find({})
     const populateClass = await Class.find({})
     const subject = await Subject.find({})
     res.render('admin/class.ejs', { subject, populateClass, teachers })
@@ -28,9 +29,9 @@ router.get('/class', async (req, res) => {
 })
 
 router.get('/newClass', async (req, res) => {
-  const teachers = await Admin.find({ userType: 'teacher' })
+  const teach = await Teacher.find({})
   const subject = await Subject.find({})
-  res.render('admin/newClass.ejs', { subject, teachers })
+  res.render('admin/newClass.ejs', { subject, teach })
 })
 
 router.post('/', async (req, res) => {

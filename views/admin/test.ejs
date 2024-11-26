@@ -251,3 +251,60 @@ index Page
         <br>
         <button type="submit">Edit Teacher </button>
       </form>
+
+
+      -----------------------------
+
+
+      <form action="/admin" method="post">
+
+        <label for="teacher">Teacher:</label>
+        <select name="teacher" id="teacher" multiple>
+          <% teachers.forEach((teachers)=> { %>
+            <option value="<%= teachers.name %>">
+
+            </option>
+            <% }) %>
+        </select>
+        <br>
+        <br>
+        <label for="subject">Subject:</label>
+        <select name="subject" id="subject" multiple>
+          <% subject.forEach((subject)=> { %>
+            <option value="<%= subject._id %>">
+              <%= subject.name %>
+                <% }) %>
+            </option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <br>
+        <label for="time">Time:</label>
+        <select name="time" id="time" multiple>
+          <option value="09:00 AM">09:00 AM</option>
+          <option value="12:00 PM">12:00 PM</option>
+          <option value="03:00 PM">03:00 PM</option>
+          <option value="06:00 PM">06:00 PM</option>
+        </select>
+        <input type="number" name="capacity" id="capacity">
+        <br>
+
+        <!-- Add a submit button -->
+        <button type="submit">Open Class</button>
+      </form>
+
+      -----------------------------
+
+      router.get('/class', async (req, res) => {
+      try {
+      // const teachers = await Admin.find({ userType: 'teacher' })
+      const teachers = await Teacher.find().populate('teacher', 'name')
+      const populateClass = await Class.find({})
+      const subject = await Subject.find({})
+      res.render('admin/class.ejs', { subject, populateClass, teachers })
+      } catch (error) {
+      console.log(error)
+      res.redirect('/')
+      }
+      })
