@@ -23,4 +23,16 @@ router.get('/new', async (req, res) => {
   }
 })
 
+router.post('/:populatedClass/join-by/:userId', async (req, res) => {
+  try {
+    await Class.findByIdAndUpdate(req.params.populatedClass, {
+      $push: { student: req.params.userId }
+    })
+    res.redirect('/student')
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+})
+
 module.exports = router

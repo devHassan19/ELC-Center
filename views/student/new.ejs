@@ -75,11 +75,8 @@
                           <%= populatedClass.time %>
                         </td>
                         <td>
-                          <form action="/student<%= populatedClass._id %>?_method=DELETE" method="POST">
+                          <form action="/student/<%= populatedClass._id %>/join-by/<%= user._id %>" method="POST">
                             <button type="submit">Join to class</button>
-                          </form>
-                          <form action="/" method="POST">
-                            <button type="submit">Favorite</button>
                           </form>
                         </td>
                       </tr>
