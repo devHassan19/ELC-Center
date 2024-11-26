@@ -4,6 +4,6 @@ const router = express.Router()
 
 const studentCtrl = require('../controllers/student')
 
-router.get('/', studentCtrl.index)
+router.get('/admin', studentCtrl.index)
 
 module.exports = router

@@ -83,19 +83,19 @@
                           <%= counter++ %>
                         </td>
                         <td>
-                          <%= populateClass.teacher %>
+                          <%= populateClass.teacher.name %>
                         </td>
                         <td>
-                          <%= populateClass.subject %>
+                          <%= populateClass.subject.name %>
                         </td>
                         <td>
                           <%= populateClass.time %>
                         </td>
                         <td>
-                          <a href="/admin/<%= populateClass._id %>/edit">Edit</a>
+                          <a href="/admin/class/<%= populateClass._id %>/edit">Edit</a>
                         </td>
                         <td>
-                          <form action="/admin/<%= populateClass._id %>?_method=DELETE" method="POST">
+                          <form action="/admin/class/<%= populateClass._id %>?_method=DELETE" method="POST">
                             <button type="submit">Delete</button>
                           </form>
                         </td>

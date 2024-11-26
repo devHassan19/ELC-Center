@@ -10,23 +10,11 @@ router.get('/', async (req, res) => {
     res.render('admin/index.ejs')
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
 // -------------Class section -------------------
-router.get('/class', async (req, res) => {
-  try {
-    // const teachers = await Admin.find({ userType: 'teacher' })
-    const teachers = await Teacher.find({}).populate('name')
-    const populateClass = await Class.find({})
-    const subject = await Subject.find({}).populate('name')
-    res.render('admin/class.ejs', { subject, populateClass, teachers })
-  } catch (error) {
-    console.log(error)
-    res.redirect('/')
-  }
-})
 
 router.get('/newClass', async (req, res) => {
   const teach = await Teacher.find({})
@@ -41,29 +29,31 @@ router.post('/', async (req, res) => {
 
 router.get('/class', async (req, res) => {
   try {
-    const teachers = await Admin.find({ userType: 'teacher' })
     const populateClass = await Class.find({})
+      .populate('teacher')
+      .populate('subject')
+    console.log(populateClass)
     const subject = await Subject.find({})
-    res.render('admin/class', { subject, populateClass, teachers })
+    res.render('admin/class.ejs', { subject, populateClass })
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
-router.get('/:classId/edit', async (req, res) => {
+router.get('/class/:classId/edit', async (req, res) => {
   try {
-    const teachers = await Admin.find({ userType: 'teacher' })
-    const subject = await Subject.find({})
     const curClass = await Class.findById(req.params.classId)
+    const teach = await Teacher.find({})
+    const subject = await Subject.find({})
     res.render('admin/editClass.ejs', {
       curClass,
-      teachers,
-      subject
+      subject,
+      teach
     })
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -74,18 +64,18 @@ router.put('/:classId', async (req, res) => {
     res.redirect('/admin/class')
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
-router.delete('/:classId', async (req, res) => {
+router.delete('/class/:classId', async (req, res) => {
   try {
     const populateClass = await Class.findById(req.params.classId)
     await Class.deleteOne()
     res.redirect('/admin/class')
   } catch (error) {
     console.error(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -99,7 +89,7 @@ router.get('/teacher', async (req, res) => {
     res.render('admin/teacher.ejs', { Teacher: populatedTeachers })
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -120,7 +110,7 @@ router.get('/teacher/:teacherId/Edit', async (req, res) => {
     })
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -131,7 +121,7 @@ router.put('/teacher/:teacherId', async (req, res) => {
     res.redirect('/admin/teacher')
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -142,7 +132,7 @@ router.delete('/teacher/:teacherId', async (req, res) => {
     res.redirect('/admin/teacher')
   } catch (error) {
     console.error(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -156,7 +146,7 @@ router.get('/subject', async (req, res) => {
     res.render('admin/subject.ejs', { Subject: populatedSubject })
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -177,7 +167,7 @@ router.get('/:subjectId/edittt', async (req, res) => {
     })
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -188,7 +178,7 @@ router.put('/admin/:subjectId', async (req, res) => {
     res.redirect('/admin/subject')
   } catch (error) {
     console.log(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 
@@ -199,7 +189,7 @@ router.delete('/admin/:subjectId', async (req, res) => {
     res.redirect('/admin/subject')
   } catch (error) {
     console.error(error)
-    res.redirect('/')
+    res.redirect('/admin')
   }
 })
 

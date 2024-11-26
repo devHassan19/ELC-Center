@@ -54,7 +54,7 @@ app.use('/auth', authController)
 app.use('/admin', isSignIn, adminCtrl)
 app.use('/student', isSignIn, studentCtrl)
 
-app.get('/', async (req, res) => {
+app.get('/admin', async (req, res) => {
   res.render('index.ejs')
 })
 app.get('/vip-lounge', isSignIn, (req, res) => {

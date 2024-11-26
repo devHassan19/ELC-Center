@@ -5,10 +5,10 @@
 <form action="/admin/<%= curClass._id %>?_method=PUT" method="post">
 
   <label for="teacher">Teacher:</label>
-  <select name="teacher" id="teacher" multiple value="<%= teachers.username %>">
-    <% teachers.forEach((teacher)=> { %>
+  <select name="teacher" id="teacher" multiple value="<%= teach.name %>">
+    <% teach.forEach((teacher)=> { %>
       <option value="<%= teacher._id %>">
-        <%= teacher.username %>
+        <%= teacher.name %>
       </option>
       <% }) %>
   </select>

@@ -26,7 +26,7 @@ router.post('/sign-up', async (req, res) => {
     //save/create the user
     const user = await User.create(req.body)
     // res.send(`Thanks for signing up ${user.username}`)
-    res.redirect('/')
+    res.redirect('/admin')
   } catch (error) {
     console.log(error)
   }
@@ -82,7 +82,7 @@ router.post('/sign-in', async (req, res) => {
 router.get('/sign-out', (req, res) => {
   try {
     req.session.destroy()
-    res.redirect('/')
+    res.redirect('/admin')
   } catch (error) {
     console.log(error)
   }
