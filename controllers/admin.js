@@ -18,9 +18,9 @@ router.get('/', async (req, res) => {
 router.get('/class', async (req, res) => {
   try {
     // const teachers = await Admin.find({ userType: 'teacher' })
-    const teachers = await Teacher.find({})
+    const teachers = await Teacher.find({}).populate('name')
     const populateClass = await Class.find({})
-    const subject = await Subject.find({})
+    const subject = await Subject.find({}).populate('name')
     res.render('admin/class.ejs', { subject, populateClass, teachers })
   } catch (error) {
     console.log(error)

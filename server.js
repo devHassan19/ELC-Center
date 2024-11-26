@@ -46,14 +46,12 @@ app.use((req, res, next) => {
 // Require Controller
 const authController = require('./controllers/auth')
 const adminCtrl = require('./controllers/admin.js')
-const teacherCtrl = require('./controllers/teacher.js')
 const studentCtrl = require('./controllers/student.js')
 
 // Use Controllers
 
 app.use('/auth', authController)
 app.use('/admin', isSignIn, adminCtrl)
-app.use('/teacher', isSignIn, teacherCtrl)
 app.use('/student', isSignIn, studentCtrl)
 
 app.get('/', async (req, res) => {
