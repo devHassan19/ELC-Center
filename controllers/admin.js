@@ -105,6 +105,10 @@ router.get('/teacher', async (req, res) => {
     res.redirect('/')
   }
 })
+
+router.get('/newTeach', async (req, res) => {
+  res.render('admin/newTeach.ejs')
+})
 // -------------end teacher section --------------
 
 // -------------Subject section ------------------
