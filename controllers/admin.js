@@ -134,6 +134,17 @@ router.put('/teacher/:teacherId', async (req, res) => {
   }
 })
 
+router.delete('/teacher/:teacherId', async (req, res) => {
+  try {
+    const teacher = await Teacher.findById(req.params.teacherId)
+    await Teacher.deleteOne()
+    res.redirect('/admin/teacher')
+  } catch (error) {
+    console.error(error)
+    res.redirect('/')
+  }
+})
+
 // -------------end teacher section --------------
 
 // -------------Subject section ------------------
