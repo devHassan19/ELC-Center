@@ -1,3 +1,47 @@
+<div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+  <form action="/admin" method="post">
+    <br><br>
+    <td>
+    <th> <label for="teacher">Teacher:</label></th>
+    <th> <select name="teacher" id="teacher">
+        <% teach.forEach((teachers)=> { %>
+          <option value="<%= teachers._id %>">
+            <%= teachers.name %>
+              <% }) %>
+          </option>
+      </select></th>
+    </td>
+    <br>
+    <br>
+    <th> <label for="subject">Subject:</label></th>
+    <th> <select name="subject" id="subject">
+        <% subject.forEach((subject)=> { %>
+          <option value="<%= subject._id %>">
+            <%= subject.name %>
+              <% }) %>
+          </option>
+      </select></th>
+    <br>
+    <br>
+    <th> <label for="time">Time:</label></th>
+    <th> <select name="time" id="time">
+        <option value="09:00 AM">09:00 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+        <option value="03:00 PM">03:00 PM</option>
+        <option value="06:00 PM">06:00 PM</option>
+      </select></th>
+    <br>
+    <br>
+    <th> <label for="capacity">Capacity:</label></th>
+    <th> <input type="number" name="capacity" id="capacity"></th>
+    <br>
+    <br>
+    <!-- Add a submit button -->
+    <button type="submit">Open Class</button>
+  </form>
+</div>
+----------------------------------------
+
 const classQty = await Class.find({}).populate('student')
 const classCap = await Class.find({}).populate('capacity')
 

@@ -58,50 +58,94 @@
               </div><!-- End Services List -->
 
 
-
             </div>
 
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-              <form action="/admin" method="post">
-                <br><br>
-                <td>
-                <th> <label for="teacher">Teacher:</label></th>
-                <th> <select name="teacher" id="teacher" multiple>
-                    <% teach.forEach((teachers)=> { %>
-                      <option value="<%= teachers._id %>">
-                        <%= teachers.name %>
-                          <% }) %>
-                      </option>
-                  </select></th>
-                </td>
-                <br>
-                <br>
-                <th> <label for="subject">Subject:</label></th>
-                <th> <select name="subject" id="subject" multiple>
-                    <% subject.forEach((subject)=> { %>
-                      <option value="<%= subject._id %>">
-                        <%= subject.name %>
-                          <% }) %>
-                      </option>
-                  </select></th>
-                <br>
-                <br>
-                <th> <label for="time">Time:</label></th>
-                <th> <select name="time" id="time" multiple>
-                    <option value="09:00 AM">09:00 AM</option>
-                    <option value="12:00 PM">12:00 PM</option>
-                    <option value="03:00 PM">03:00 PM</option>
-                    <option value="06:00 PM">06:00 PM</option>
-                  </select></th>
-                <br>
-                <br>
-                <th> <label for="capacity">Capacity:</label></th>
-                <th> <input type="number" name="capacity" id="capacity"></th>
-                <br>
-                <br>
-                <!-- Add a submit button -->
-                <button type="submit">Open Class</button>
-              </form>
+              <div class="row gy-3">
+                <section id="pricing" class="pricing section">
+
+
+                  <div class="container section-title" data-aos="fade-up">
+                  </div>
+
+                  <div class="container">
+
+                    <div class="row gy-3">
+                      <form action="/admin" method="post">
+                        <div class="col-xl-4 col-lg-4" data-aos="fade-up">
+                          <div class="pricing-item featured">
+                            <h3>Teacher:</h3>
+                            <ul>
+                              <li>
+                                <th> <select name="teacher" id="teacher"
+                                    style="width: 200px; height: 40px; font-size: 16px;">
+                                    <% teach.forEach((teachers)=> { %>
+                                      <option value="<%= teachers._id %>">
+                                        <%= teachers.name %>
+                                          <% }) %>
+                                      </option>
+                                  </select></th>
+                                </td>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                          <div class="pricing-item featured">
+                            <h3>Subject:</h3>
+                            <ul>
+                              <li>
+                                <th> <select name="subject" id="subject"
+                                    style="width: 200px; height: 40px; font-size: 16px;">
+                                    <% subject.forEach((subject)=> { %>
+                                      <option value="<%= subject._id %>">
+                                        <%= subject.name %>
+                                          <% }) %>
+                                      </option>
+                                  </select></th>
+                                </td>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                          <div class="pricing-item featured">
+                            <h3>Time:</h3>
+                            <ul>
+                              <li>
+                                <th> <select name="time" id="time" style="width: 200px; height: 40px; font-size: 16px;">
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                    <option value="03:00 PM">03:00 PM</option>
+                                    <option value="06:00 PM">06:00 PM</option>
+                                  </select></th>
+                                </td>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                          <div class="pricing-item featured">
+                            <h3>Capacity:</h3>
+                            <ul>
+                              <li>
+                                <th> <input type="number" name="capacity" id="capacity"></th>
+                                </td>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <button type="submit">Open Class</button>
+                      </form>
+                    </div>
+
+
+                  </div>
+                </section>
+              </div>
             </div>
 
           </div>
@@ -109,6 +153,8 @@
         </div>
 
       </section><!-- /Service Details Section -->
+
+
 
     </main>
 
