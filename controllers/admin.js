@@ -128,7 +128,7 @@ router.put('/teacher/:teacherId', async (req, res) => {
 router.delete('/teacher/:teacherId', async (req, res) => {
   try {
     const teacher = await Teacher.findById(req.params.teacherId)
-    await Teacher.deleteOne()
+    await teacher.deleteOne()
     res.redirect('/admin/teacher')
   } catch (error) {
     console.error(error)
@@ -156,6 +156,7 @@ router.get('/newSub', async (req, res) => {
 
 router.post('/newSub', async (req, res) => {
   await Subject.create(req.body)
+  req.session.message = 'Subject Add successfully'
   res.redirect('/admin/subject')
 })
 
@@ -185,7 +186,7 @@ router.put('/admin/:subjectId', async (req, res) => {
 router.delete('/admin/:subjectId', async (req, res) => {
   try {
     const subject = await Subject.findById(req.params.subjectId)
-    await Subject.deleteOne()
+    await subject.deleteOne()
     res.redirect('/admin/subject')
   } catch (error) {
     console.error(error)
