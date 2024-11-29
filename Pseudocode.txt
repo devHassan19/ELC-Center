@@ -1,0 +1,29 @@
+1) Create the required of Controllers and models and views for the project.
+
+2) Create Auth model, Controller and views
+  a-Create Auth models to deal with user data in mongo BD for allows for the new user sing up in the website or sing in for old user 
+  b- Create Controller for map you for the correct path and move you to the page what are you looking for 
+  c- Create Auth views and create two pages one for sing in and one for sing up and send the data to the controller to deal with database 
+
+  3) Create Admin, Controller and views
+    a- Create Admin controller to deal with Admin views because we need send and fetch data from database 
+    b- Create the paths in Admin controller for classes and subjects and teacher
+    c- Create Admin views by build 3 pages to classes and 3 pages to subjects and 3 pages to teacher and build main page call index 
+
+  4) Create Student, Controller and views
+    a-  Create Student controller to deal with Admin views because we need send and fetch data from database 
+    b- Create the paths in Student controller for main page and add new class
+    c- Create Student views by build 2 pages, build main page call index to show the student class and one page to allow to student join to new class
+  
+  5) Admin tasks
+    a-Admin after sing in and can add new subject and have access to edit it or remove the subject
+    b- The subject was add with show in page call subject and the admin can make any action throw this page 
+    c- Admin can add new teacher and have access to edit it or remove the teacher
+    d- The teacher was add with show in page call teachers and the admin can make any action throw this page 
+    e- Admin can open Class by shoos the teacher and subject form the data was add it in database of teachers and subjects and select the time for the class and write the quantity of student in this class 
+  
+  6) student tasks
+    a- student after sing in and can join to any class was the admin open it by press on join to class 
+    b- student will see in this page only the class was the admin open it and can shoos any class he like it 
+    c- Student home page will display which the classes was the student join in  
+    
