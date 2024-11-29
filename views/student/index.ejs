@@ -48,46 +48,50 @@
 
             <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
               <br>
+              <% if(message) {%>
+                <h3>
+                  <%= message %>
+                </h3>
+                <% } %>
+                  <br>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Teacher</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Time</th>
+                      </tr>
 
-              <br>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Teacher</th>
-                    <th scope="col">Subject</th>
-                    <th scope="col">Time</th>
-                  </tr>
+
+                      <div class="profile-card-container">
 
 
-                  <div class="profile-card-container">
+                        <% let counter=1; %>
+                          <% mySubject.forEach((mySubject)=> { %>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <%= counter++ %>
+                        </td>
+                        <td>
+                          <%= mySubject.teacher.name %>
+                        </td>
+                        <td>
+                          <%= mySubject.subject.name %>
+                        </td>
+                        <td>
+                          <%= mySubject.time %>
+                        </td>
+                      </tr>
+                      <% }) %>
+                    </tbody>
 
-
-                    <% let counter=1; %>
-                      <% mySubject.forEach((mySubject)=> { %>
-                <tbody>
-                  <tr>
-                    <td>
-                      <%= counter++ %>
-                    </td>
-                    <td>
-                      <%= mySubject.teacher.name %>
-                    </td>
-                    <td>
-                      <%= mySubject.subject.name %>
-                    </td>
-                    <td>
-                      <%= mySubject.time %>
-                    </td>
-                  </tr>
-                  <% }) %>
-                </tbody>
-
-              </table>
-              <br><br>
-              <span class="navmenu" style="display: inline;">
-                <a class="active" href="/student/new" role="button" style="width: fit-content;">Join to Class</a>
-              </span>
+                  </table>
+                  <br><br>
+                  <span class="navmenu" style="display: inline;">
+                    <a class="active" href="/student/new" role="button" style="width: fit-content;">Join to Class</a>
+                  </span>
             </div>
 
           </div>

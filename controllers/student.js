@@ -33,9 +33,12 @@ router.get('/new', async (req, res) => {
 router.post('/:populatedClass/join-by/:userId', async (req, res) => {
   try {
     req.body.owner = req.session.user._id
+
     await Class.findByIdAndUpdate(req.params.populatedClass, {
       $push: { student: req.params.userId }
     })
+    req.session.message = 'Class Add successfully'
+
     res.redirect('/student')
   } catch (error) {
     console.log(error)
