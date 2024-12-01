@@ -71,7 +71,7 @@ router.put('/:classId', async (req, res) => {
 router.delete('/class/:classId', async (req, res) => {
   try {
     const populateClass = await Class.findById(req.params.classId)
-    await Class.deleteOne()
+    await populateClass.deleteOne()
     res.redirect('/admin/class')
   } catch (error) {
     console.error(error)
